@@ -10,3 +10,44 @@ include_once 'catman_users.features.inc';
  */
 
 // Drupal needs this blank file.
+
+
+/**
+ * Implements hook_form_alter().
+ */
+function catman_users_register_form_alter(&$form, &$form_state, $form_id) {
+  /*
+   *if (isset($form['type']) && $form['type']['#value'] . '_node_settings' == $form_id) {
+   *  $form['workflow']['upload_' . $form['type']['#value']] = array(
+   *    '#type' => 'radios',
+   *    '#title' => t('Attachments'),
+   *    '#default_value' => variable_get('upload_' . $form['type']['#value'], 1),
+   *    '#options' => array(t('Disabled'), t('Enabled')),
+   * );
+   *}
+   */
+
+dpm($form);
+  switch ($form_id) {
+  	case 'user_profile_form':
+
+      
+
+  	// 	$form[''] = array(
+   //  	'#type' => '',
+   //  	'#title' => t(''),
+   //  	'#default_value' => $settings[''],
+   //  	'#required' => ,
+   //  	'#element_validate' => array(''),
+   //  	'#description' => t(''),
+  	// );
+
+  		break;
+  	
+  	default:
+  		# code...
+  		break;
+  }
+
+  
+}

@@ -35,9 +35,18 @@ function catman_users_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'user_mail_cancel_confirm_body';
-  $strongarm->value = '[user:name],
+  $strongarm->value = 'We\'ve received a request to cancel your [site:name] account.
+Thank you!
 
-A request to cancel your account has been made at [site:name].
+Extension and Experiment Station Communications
+Oregon State University
+422 Kerr Administration Bldg.
+Corvallis, OR 97331-2119
+Phone: 541-737-2513 or 800-561-6719
+Email: puborders@oregonstate.edu
+extension.oregonstate.edu/catalog
+
+
 
 You may now cancel your account on [site:url-brief] by clicking this link or copying and pasting it into your browser:
 
@@ -85,61 +94,71 @@ This link can only be used once to log in and will lead you to a page where you 
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'user_mail_register_admin_created_body';
-  $strongarm->value = '[user:name],
-
-A site administrator at [site:name] has created an account for you. You may now log in by clicking this link or copying and pasting it to your browser:
-
+  $strongarm->value = 'We created an account for you at [site:name]. To confirm your email address and finish setting up your account, please click the following link or copy and paste it into your browser:
 [user:one-time-login-url]
 
-This link can only be used once to log in and will lead you to a page where you can set your password.
-
-After setting your password, you will be able to log in at [site:login-url] in the future using:
-
+This link can be used only once, and it will take you directly to a page where you can set your own password. After setting your password, you will be able to log in at [site:login-url] in the future using:
 username: [user:name]
-password: Your password
+password: The password you create
 
---  [site:name] team';
+Thank you!
+
+
+Extension and Experiment Station Communications
+Oregon State University
+422 Kerr Administration Bldg.
+Corvallis, OR 97331-2119
+Phone: 541-737-2513 or 800-561-6719
+Email: puborders@oregonstate.edu
+extension.oregonstate.edu/catalog';
   $export['user_mail_register_admin_created_body'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'user_mail_register_admin_created_subject';
-  $strongarm->value = 'An administrator created an account for you at [site:name]';
+  $strongarm->value = 'Your new [site:name] account';
   $export['user_mail_register_admin_created_subject'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'user_mail_register_no_approval_required_body';
-  $strongarm->value = '[user:name],
-
-Thank you for registering at [site:name]. You may now log in by clicking this link or copying and pasting it to your browser:
-
+  $strongarm->value = 'Thank you for creating an account at [site:name]. To confirm your email address and finish setting up your account, please click the following link or copy and paste it into your browser:
 [user:one-time-login-url]
 
-This link can only be used once to log in and will lead you to a page where you can set your password.
-
-After setting your password, you will be able to log in at [site:login-url] in the future using:
-
+This link can be used only once, and it will take you directly to a page where you can set your own password. After setting your password, you will be able to log in at [site:login-url] in the future using:
 username: [user:name]
-password: Your password
+password: The password you create
 
---  [site:name] team';
+If you requested an "OSU affiliate" or "Reseller" account type, we will verify your eligibility for the account type you selected.
+
+Thank you!
+
+
+Extension and Experiment Station Communications
+Oregon State University
+422 Kerr Administration Bldg.
+Corvallis, OR 97331-2119
+Phone: 541-737-2513 or 800-561-6719
+Email: puborders@oregonstate.edu
+extension.oregonstate.edu/catalog';
   $export['user_mail_register_no_approval_required_body'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'user_mail_register_no_approval_required_subject';
-  $strongarm->value = 'Account details for [user:name] at [site:name]';
+  $strongarm->value = 'Your new [site:name] account';
   $export['user_mail_register_no_approval_required_subject'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'user_mail_register_pending_approval_body';
-  $strongarm->value = '[user:name],
+  $strongarm->value = 'WE ARE NOT CURRENTLY USING THIS MESSAGE BECAUSE ADMIN APPROVAL IS NOT REQUIRED FOR ACCOUNT CREATION.
+
+IF WE DECIDE TO USE IT IN THE FUTURE, WE NEED TO REVIEW AND REVISE THE MESSAGE SUBJECT AND TEXT.
 
 Thank you for registering at [site:name]. Your application for an account is currently pending approval. Once it has been approved, you will receive another e-mail containing information about how to log in, set your password, and other details.
 
@@ -151,14 +170,18 @@ Thank you for registering at [site:name]. Your application for an account is cur
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'user_mail_register_pending_approval_subject';
-  $strongarm->value = 'Account details for [user:name] at [site:name] (pending admin approval)';
+  $strongarm->value = 'NOT CURRENTLY USED  Account details for [user:name] at [site:name] (pending admin approval)';
   $export['user_mail_register_pending_approval_subject'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'user_mail_status_activated_body';
-  $strongarm->value = '[user:name],
+  $strongarm->value = 'WE ARE NOT CURRENTLY USING THIS MESSAGE BECAUSE ADMIN APPROVAL IS NOT REQUIRED FOR ACCOUNT CREATION.
+
+IF WE DECIDE TO USE IT IN THE FUTURE, WE NEED TO REVIEW AND REVISE THE MESSAGE SUBJECT AND TEXT.
+
+
 
 Your account at [site:name] has been activated.
 
@@ -187,7 +210,7 @@ password: Your password
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'user_mail_status_activated_subject';
-  $strongarm->value = 'Account details for [user:name] at [site:name] (approved)';
+  $strongarm->value = 'NOT CURRENTLY USED  Account details for [user:name] at [site:name] (approved)';
   $export['user_mail_status_activated_subject'] = $strongarm;
 
   $strongarm = new stdClass();

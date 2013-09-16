@@ -10,13 +10,13 @@
 function catman_users_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_req_account_type'
-  $field_bases['field_req_account_type'] = array(
+  // Exported field_base: 'field_requested_account_type'
+  $field_bases['field_requested_account_type'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_req_account_type',
+    'field_name' => 'field_requested_account_type',
     'foreign keys' => array(),
     'indexes' => array(
       'value' => array(
@@ -28,11 +28,11 @@ function catman_users_field_default_field_bases() {
     'settings' => array(
       'allowed_values' => array(
         1 => 'Customer',
-        2 => 'OSU affiliate (Oregon State University faculty and staff)',
-        3 => 'Reseller (bookstores, gift shops)',
+        2 => 'OSU affiliate <em>(Oregon State University faculty and staff)</em>',
+        3 => 'Reseller <em>(bookstores, gift shops)</em>',
       ),
       'allowed_values_function' => '',
-      'profile2_private' => 0,
+      'profile2_private' => FALSE,
     ),
     'translatable' => 0,
     'type' => 'list_integer',

@@ -10,9 +10,9 @@
 function catman_users_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'profile2-eesc_profile-field_req_account_type'
-  $field_instances['profile2-eesc_profile-field_req_account_type'] = array(
-    'bundle' => 'eesc_profile',
+  // Exported field_instance: 'user-user-field_requested_account_type'
+  $field_instances['user-user-field_requested_account_type'] = array(
+    'bundle' => 'user',
     'default_value' => array(
       0 => array(
         'value' => 1,
@@ -22,26 +22,26 @@ function catman_users_field_default_field_instances() {
     'description' => 'All new accounts are created as general "Customer" accounts. If you request an "OSU affiliate" or "Reseller" account, we will need to verify your eligibility before we process your request.',
     'display' => array(
       'default' => array(
-        'label' => 'hidden',
+        'label' => 'above',
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
         'weight' => 0,
       ),
     ),
-    'entity_type' => 'profile2',
+    'entity_type' => 'user',
     'fences_wrapper' => 'ul',
-    'field_name' => 'field_req_account_type',
+    'field_name' => 'field_requested_account_type',
     'label' => 'Requested account type',
     'required' => 1,
     'settings' => array(
-      'user_register_form' => FALSE,
+      'user_register_form' => 1,
     ),
     'widget' => array(
       'active' => 1,
       'module' => 'options',
       'settings' => array(
-        'apply_chosen' => 0,
+        'apply_chosen' => 1,
       ),
       'type' => 'options_select',
       'weight' => 1,
