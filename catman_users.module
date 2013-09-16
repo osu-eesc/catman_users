@@ -1,0 +1,12 @@
+<?php
+/**
+ * @file
+ * Code for the Catman Users feature.
+ */
+
+include_once 'catman_users.features.inc';
+/**
+ * @file
+ */
+
+// Drupal needs this blank file.
