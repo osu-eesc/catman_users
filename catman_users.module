@@ -17,27 +17,32 @@ include_once 'catman_users.features.inc';
  * Implements hook_form_alter().
  */
 function catman_users_form_alter(&$form, &$form_state, $form_id) {
-  
+
   switch ($form_id) {
 
     case 'user_profile_form':
 
       $form['account']['mail']['#weight'] = '-10'; // make field appear at top of form
 
-      $form['account']['mail']['#description'] = t('A valid e-mail address. Messages from the OSU Extension Catalog will be sent to this address. Your email address is confidential and won\'t ever be sold, etc.');
+      $form['account']['mail']['#description'] = t('Enter a valid e-mail address. We will send all messages about your account (e.g., password reset emails) and your OSU Extension Catalog orders to this address. Your e-mail address will not be sold or made public.');
+
+      $form['account']['current_pass']['#description'] = t('Enter your current password (required to change your e-mail address or password).<br> 
+Forgot your password? <a href="/catalog/user/password" title="Request new password via e-mail.">Request new password</a>.');
+
+      $form['account']['pass']['#description'] = t('Enter your new password in both fields.');
+
+      
 
       // don't display requested account type
       $form['field_requested_account_type']['#access'] = FALSE;
       
-        //dpm($form, 'user_profile_form');
-
-
+        
 
       break;
 
     case 'user_register_form':
 
-      $form['account']['mail']['#description'] = t('A valid e-mail address. Messages from the OSU Extension Catalog will be sent to this address. Your email address is confidential and won\'t ever be sold, etc.');
+      $form['account']['mail']['#description'] = t('Enter a valid e-mail address. We will send all messages about your account (e.g., password reset emails) and your OSU Extension Catalog orders to this address. Your e-mail address will not be sold or made public. <br><br><em>Note for OSU faculty and staff:</em> If you wish to make purchases for use in your Extension, research, or teaching work, please create an account with your OSU e-mail address. If you wish to make personal purchases, please create an account with a personal e-mail address. You can have more than one account, but each account requires a unique e-mail address.');
       
         //dpm($form, 'user_register_form');
 
@@ -48,6 +53,35 @@ function catman_users_form_alter(&$form, &$form_state, $form_id) {
       break;
   }
 }
+
+
+/**
+ * Implement this hook to generate a username for email_registration module.
+ *
+ * Other modules may implement hook_email_registration_name($edit, $account)
+ * to generate a username (return a string to be used as the username, NULL
+ * to have email_registration generate it).
+ *
+ * @param $edit
+ *   The array of form values submitted by the user.
+ * @param $account
+ *   The user object on which the operation is being performed.
+ *
+ * @return
+ *   A string defining a generated username.
+ */
+// function catman_users_email_registration_name($edit, $account) {
+//   return 'u' . $account->uid;
+// }
+
+/**
+ * @} End of "addtogroup hooks".
+ */
+
+
+
+
+
 
 // function catman_users_menu_alter(&$items) {
 //   //condition to check the user

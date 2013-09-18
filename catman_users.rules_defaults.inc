@@ -61,7 +61,8 @@ function catman_users_default_rules_configuration() {
         { "mail" : {
             "to" : "jennifer.alexander@oregonstate.edu, bryan.mayjor@oregonstate.edu",
             "subject" : "New [site:name] account created",
-            "message" : "A new [site-name] account was created.\\u000D\\u000AUser role is set to account:roles:1\\u000D\\u000A\\u000D\\u000AThey requested the account:field-requested-account-type account type"
+            "message" : "A new [site:name] account was created for [account:mail]\\r\\nRequested account type: [account:field-requested-account-type]\\r\\nCurrent user role: [account:roles]\\r\\n\\r\\nPlease log into CatMan and confirm that the user is eligible for the account type selected.\\r\\n",
+            "language" : [ "" ]
           }
         }
       ]

@@ -13,6 +13,53 @@ function catman_users_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'htmlmail_postfilter';
+  $strongarm->value = 'emogrifier';
+  $export['htmlmail_postfilter'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'htmlmail_test';
+  $strongarm->value = array(
+    'to' => 'bryan.mayjor@oregonstate.edu',
+    'subject' => 'Let\'s send a pretty email - plain text',
+    'body' => array(
+      'value' => '<p>hey now brown cow</p><ul><li>dont ya know the music never stopped</li></ul>',
+      'format' => 'plain_text',
+    ),
+  );
+  $export['htmlmail_test'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'htmlmail_theme';
+  $strongarm->value = '';
+  $export['htmlmail_theme'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'mailsystem_theme';
+  $strongarm->value = 'doug_fir_ext';
+  $export['mailsystem_theme'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'mail_system';
+  $strongarm->value = array(
+    'default-system' => 'HTMLMailSystem',
+    'htmlmail' => 'HTMLMailSystem',
+    'webform_webform_html' => 'HTMLMailSystem',
+    'commerce_invoice_receipt' => 'InvoiceMailSystem',
+  );
+  $export['mail_system'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'user_admin_role';
   $strongarm->value = '3';
   $export['user_admin_role'] = $strongarm;
@@ -98,7 +145,7 @@ extension.oregonstate.edu/catalog
 [user:one-time-login-url]
 
 This link can be used only once, and it will take you directly to a page where you can set your own password. After setting your password, you will be able to log in at [site:login-url] in the future using:
-username: [user:name]
+e-mail address: [user:mail]
 password: The password you create
 
 Please contact us if you have questions. Thank you!
@@ -128,7 +175,7 @@ extension.oregonstate.edu/catalog';
 [user:one-time-login-url]
 
 This link can be used only once, and it will take you directly to a page where you can set your own password. After setting your password, you will be able to log in at [site:login-url] in the future using:
-username: [user:name]
+e-mail address: [user:mail]
 password: The password you create
 
 If you requested an "OSU affiliate" or "Reseller" account type, we will verify your eligibility for the account type you selected and contact you if we have questions.
