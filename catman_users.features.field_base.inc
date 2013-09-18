@@ -28,8 +28,8 @@ function catman_users_field_default_field_bases() {
     'settings' => array(
       'allowed_values' => array(
         1 => 'Customer',
-        2 => 'OSU affiliate <em>(Oregon State University faculty and staff)</em>',
-        3 => 'Reseller <em>(bookstores, gift shops)</em>',
+        2 => 'OSU affiliate (Oregon State University faculty and staff)',
+        3 => 'Reseller (bookstores, gift shops)',
       ),
       'allowed_values_function' => '',
       'profile2_private' => FALSE,

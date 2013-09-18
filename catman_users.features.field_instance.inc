@@ -19,13 +19,12 @@ function catman_users_field_default_field_instances() {
       ),
     ),
     'deleted' => 0,
-    'description' => 'All new accounts are created as general "Customer" accounts. If you request an "OSU affiliate" or "Reseller" account, we will need to verify your eligibility before we process your request.',
+    'description' => 'If you request an "OSU affiliate" or "Reseller" account, we will verify your eligibility and let you know if we have questions.',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
+        'type' => 'hidden',
         'weight' => 0,
       ),
     ),
@@ -33,7 +32,7 @@ function catman_users_field_default_field_instances() {
     'fences_wrapper' => 'ul',
     'field_name' => 'field_requested_account_type',
     'label' => 'Requested account type',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'user_register_form' => 1,
     ),
@@ -50,7 +49,7 @@ function catman_users_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('All new accounts are created as general "Customer" accounts. If you request an "OSU affiliate" or "Reseller" account, we will need to verify your eligibility before we process your request.');
+  t('If you request an "OSU affiliate" or "Reseller" account, we will verify your eligibility and let you know if we have questions.');
   t('Requested account type');
 
   return $field_instances;
