@@ -35,8 +35,43 @@ function catman_users_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'user_mail_cancel_confirm_body';
-  $strongarm->value = 'We\'ve received a request to cancel your [site:name] account.
-Thank you!
+  $strongarm->value = 'We received a request to cancel your [site:name] account. NOTE: Cancellation of your account is not reversible.
+
+If you still want to cancel your account, click this link or copy and paste it into your browser:
+[user:cancel-url]
+
+This link expires in one day, and nothing will happen if it is not used.
+
+Please contact us if you have questions. Thank you.
+
+
+Extension and Experiment Station Communications
+Oregon State University
+422 Kerr Administration Bldg.
+Corvallis, OR 97331-2119
+Phone: 541-737-2513 or 800-561-6719
+Email: puborders@oregonstate.edu
+extension.oregonstate.edu/catalog';
+  $export['user_mail_cancel_confirm_body'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'user_mail_cancel_confirm_subject';
+  $strongarm->value = 'Cancellation request for your [site:name] account';
+  $export['user_mail_cancel_confirm_subject'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'user_mail_password_reset_body';
+  $strongarm->value = 'We received a request to reset the password for your [site:name] account. To reset your password, please click the following link or copy and paste it into your browser:
+[user:one-time-login-url]
+
+This link can only be used once. It expires after one day, and nothing will happen if it\'s not used.
+
+Please contact us if you have questions. Thank you.
+
 
 Extension and Experiment Station Communications
 Oregon State University
@@ -45,63 +80,28 @@ Corvallis, OR 97331-2119
 Phone: 541-737-2513 or 800-561-6719
 Email: puborders@oregonstate.edu
 extension.oregonstate.edu/catalog
-
-
-
-You may now cancel your account on [site:url-brief] by clicking this link or copying and pasting it into your browser:
-
-[user:cancel-url]
-
-NOTE: The cancellation of your account is not reversible.
-
-This link expires in one day and nothing will happen if it is not used.
-
---  [site:name] team';
-  $export['user_mail_cancel_confirm_body'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'user_mail_cancel_confirm_subject';
-  $strongarm->value = 'Account cancellation request for [user:name] at [site:name]';
-  $export['user_mail_cancel_confirm_subject'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'user_mail_password_reset_body';
-  $strongarm->value = '[user:name],
-
-A request to reset the password for your account has been made at [site:name].
-
-You may now log in by clicking this link or copying and pasting it to your browser:
-
-[user:one-time-login-url]
-
-This link can only be used once to log in and will lead you to a page where you can set your password. It expires after one day and nothing will happen if it\'s not used.
-
---  [site:name] team';
+';
   $export['user_mail_password_reset_body'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'user_mail_password_reset_subject';
-  $strongarm->value = 'Replacement login information for [user:name] at [site:name]';
+  $strongarm->value = 'New password for your [site:name] account';
   $export['user_mail_password_reset_subject'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'user_mail_register_admin_created_body';
-  $strongarm->value = 'We created an account for you at [site:name]. To confirm your email address and finish setting up your account, please click the following link or copy and paste it into your browser:
+  $strongarm->value = 'We created an [site:name] account for you. To confirm your email address and finish setting up your account, please click the following link or copy and paste it into your browser:
 [user:one-time-login-url]
 
 This link can be used only once, and it will take you directly to a page where you can set your own password. After setting your password, you will be able to log in at [site:login-url] in the future using:
 username: [user:name]
 password: The password you create
 
-Thank you!
+Please contact us if you have questions. Thank you!
 
 
 Extension and Experiment Station Communications
@@ -124,16 +124,16 @@ extension.oregonstate.edu/catalog';
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'user_mail_register_no_approval_required_body';
-  $strongarm->value = 'Thank you for creating an account at [site:name]. To confirm your email address and finish setting up your account, please click the following link or copy and paste it into your browser:
+  $strongarm->value = 'Thank you for creating an [site:name] account. To confirm your email address and finish setting up your account, please click the following link or copy and paste it into your browser:
 [user:one-time-login-url]
 
 This link can be used only once, and it will take you directly to a page where you can set your own password. After setting your password, you will be able to log in at [site:login-url] in the future using:
 username: [user:name]
 password: The password you create
 
-If you requested an "OSU affiliate" or "Reseller" account type, we will verify your eligibility for the account type you selected.
+If you requested an "OSU affiliate" or "Reseller" account type, we will verify your eligibility for the account type you selected and contact you if we have questions.
 
-Thank you!
+Please contact us if you have questions. Thank you!
 
 
 Extension and Experiment Station Communications
@@ -203,7 +203,7 @@ password: Your password
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'user_mail_status_activated_notify';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['user_mail_status_activated_notify'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -217,50 +217,65 @@ password: Your password
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'user_mail_status_blocked_body';
-  $strongarm->value = '[user:name],
+  $strongarm->value = 'Your [site:name] account has been blocked.
 
-Your account on [site:name] has been blocked.
+Please contact us if you have questions. Thank you.
 
---  [site:name] team';
+
+Extension and Experiment Station Communications
+Oregon State University
+422 Kerr Administration Bldg.
+Corvallis, OR 97331-2119
+Phone: 541-737-2513 or 800-561-6719
+Email: puborders@oregonstate.edu
+extension.oregonstate.edu/catalog';
   $export['user_mail_status_blocked_body'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'user_mail_status_blocked_notify';
-  $strongarm->value = 0;
+  $strongarm->value = 1;
   $export['user_mail_status_blocked_notify'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'user_mail_status_blocked_subject';
-  $strongarm->value = 'Account details for [user:name] at [site:name] (blocked)';
+  $strongarm->value = 'Account details for your [site:name] account (blocked)';
   $export['user_mail_status_blocked_subject'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'user_mail_status_canceled_body';
-  $strongarm->value = '[user:name],
+  $strongarm->value = 'Your [site:name] account has been canceled.
 
-Your account on [site:name] has been canceled.
+Please contact us if you have questions. Thank you.
 
---  [site:name] team';
+
+Extension and Experiment Station Communications
+Oregon State University
+422 Kerr Administration Bldg.
+Corvallis, OR 97331-2119
+Phone: 541-737-2513 or 800-561-6719
+Email: puborders@oregonstate.edu
+extension.oregonstate.edu/catalog
+';
   $export['user_mail_status_canceled_body'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'user_mail_status_canceled_notify';
-  $strongarm->value = 0;
+  $strongarm->value = 1;
   $export['user_mail_status_canceled_notify'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'user_mail_status_canceled_subject';
-  $strongarm->value = 'Account details for [user:name] at [site:name] (canceled)';
+  $strongarm->value = 'Account details for your [site:name] account (canceled)';
   $export['user_mail_status_canceled_subject'] = $strongarm;
 
   $strongarm = new stdClass();

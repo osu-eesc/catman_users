@@ -1,8 +1,8 @@
 <?php
 /**
- * @file
- * Code for the Catman Users feature.
- */
+* @file
+* Custom functions and overrides.
+*/
 
 include_once 'catman_users.features.inc';
 /**
@@ -12,42 +12,73 @@ include_once 'catman_users.features.inc';
 // Drupal needs this blank file.
 
 
+
 /**
  * Implements hook_form_alter().
  */
-function catman_users_register_form_alter(&$form, &$form_state, $form_id) {
-  /*
-   *if (isset($form['type']) && $form['type']['#value'] . '_node_settings' == $form_id) {
-   *  $form['workflow']['upload_' . $form['type']['#value']] = array(
-   *    '#type' => 'radios',
-   *    '#title' => t('Attachments'),
-   *    '#default_value' => variable_get('upload_' . $form['type']['#value'], 1),
-   *    '#options' => array(t('Disabled'), t('Enabled')),
-   * );
-   *}
-   */
-
-dpm($form);
+function catman_users_form_alter(&$form, &$form_state, $form_id) {
+  
   switch ($form_id) {
-  	case 'user_profile_form':
 
+    case 'user_profile_form':
+
+      $form['account']['mail']['#weight'] = '-10'; // make field appear at top of form
+
+      $form['account']['mail']['#description'] = t('A valid e-mail address. Messages from the OSU Extension Catalog will be sent to this address. Your email address is confidential and won\'t ever be sold, etc.');
+
+      // don't display requested account type
+      $form['field_requested_account_type']['#access'] = FALSE;
       
+        //dpm($form, 'user_profile_form');
 
-  	// 	$form[''] = array(
-   //  	'#type' => '',
-   //  	'#title' => t(''),
-   //  	'#default_value' => $settings[''],
-   //  	'#required' => ,
-   //  	'#element_validate' => array(''),
-   //  	'#description' => t(''),
-  	// );
 
-  		break;
-  	
-  	default:
-  		# code...
-  		break;
+
+      break;
+
+    case 'user_register_form':
+
+      $form['account']['mail']['#description'] = t('A valid e-mail address. Messages from the OSU Extension Catalog will be sent to this address. Your email address is confidential and won\'t ever be sold, etc.');
+      
+        //dpm($form, 'user_register_form');
+
+      break;
+    
+    default:
+      # code...
+      break;
   }
+}
+
+// function catman_users_menu_alter(&$items) {
+//   //condition to check the user
+//   global $user;
+//   if($user->id != '1') { //can use $user->name as well
+//     $items['user/password']['access callback'] = FALSE;
+//   }
 
   
-}
+// }
+
+
+
+/**
+* Implementation of hook_menu_alter().
+* Remember to clear the menu cache after adding/editing this function.
+*/
+// function catman_users_menu_alter(&$items) {
+//   // Removing certain local navigation tabs that are either undesired or need to be custom relocated.
+
+//   // Set these tabs to MENU_CALLBACK, so they still register the path, but just don't show the tab:
+//   $items['user/password/track']['type'] = MENU_CALLBACK;
+//   $items['user/$uid/orders/track']['type'] = MENU_CALLBACK;
+//   $items['search/user']['type'] = MENU_CALLBACK;
+
+//   // Fully unset these tabs and their paths, don't want them at all. This breaks the path as well:
+//   unset($items['user/password']['type']);
+//   unset($items['user/%/orders']['type']);
+// }
+
+
+
+
+
