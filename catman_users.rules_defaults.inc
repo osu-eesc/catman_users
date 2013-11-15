@@ -54,6 +54,7 @@ function catman_users_default_rules_configuration() {
   $items['rules_send_email_to_eesc_when_new_account_is_created'] = entity_import('rules_config', '{ "rules_send_email_to_eesc_when_new_account_is_created" : {
       "LABEL" : "Send email to EESC when new account is created",
       "PLUGIN" : "reaction rule",
+      "ACTIVE" : false,
       "TAGS" : [ "catman" ],
       "REQUIRES" : [ "rules" ],
       "ON" : [ "user_insert" ],

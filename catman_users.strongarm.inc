@@ -14,7 +14,7 @@ function catman_users_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'htmlmail_postfilter';
-  $strongarm->value = 'emogrifier';
+  $strongarm->value = 'commerce_order_message';
   $export['htmlmail_postfilter'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -22,11 +22,39 @@ function catman_users_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'htmlmail_test';
   $strongarm->value = array(
-    'to' => 'bryan.mayjor@oregonstate.edu',
-    'subject' => 'Let\'s send a pretty email - plain text',
+    'to' => 'bmayjor@gmail.com',
+    'subject' => 'testing commerce mail filter - html mail system',
     'body' => array(
-      'value' => '<p>hey now brown cow</p><ul><li>dont ya know the music never stopped</li></ul>',
-      'format' => 'plain_text',
+      'value' => '<p>Please find below the invoice related to your order [commerce-invoice:order:order-number] at [site:name].</p>
+
+<p><strong>Invoice number</strong>: [commerce-invoice:invoice-number]</p>
+
+<table>
+  <tr>
+    <td>[commerce-order:commerce_customer_billing]<td>
+    <td>[commerce-order:commerce_customer_billing]<td>
+  </tr>
+</table>
+
+<p>Misc tokens available</p>
+<ul>
+  <li>order status: [commerce-invoice:order:status]</li>
+  <li>payment method: [commerce-invoice:order:payment-method-short-title]</li>
+  <li>billing phone: [commerce-order:commerce-customer-billing:field_billing_phone] </li>
+  <li>shipping phone: [commerce-order:commerce-customer-shipping:field_billing_phone] </li>
+  <li>order email: [commerce-invoice:order:mail] </li>
+  <li>order state: [commerce-invoice:order:state-title] </li>
+  <li> </li>
+</ul>
+  
+<p>[commerce-invoice:order:commerce-email-order-items]</p>
+
+<p>You can view your invoices at any time by logging into our website at: [site:login-url]</p>
+
+<p>You can find the current invoice at: [site:url]user/[commerce-invoice:uid]/invoices/[commerce-invoice:invoice-id]</p>
+
+<p>Please contact us if you have any questions about your invoice.</p>',
+      'format' => 'commerce_order_message',
     ),
   );
   $export['htmlmail_test'] = $strongarm;
@@ -42,7 +70,7 @@ function catman_users_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'mailsystem_theme';
-  $strongarm->value = 'doug_fir_ext';
+  $strongarm->value = 'default';
   $export['mailsystem_theme'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -50,10 +78,9 @@ function catman_users_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'mail_system';
   $strongarm->value = array(
-    'default-system' => 'HTMLMailSystem',
+    'default-system' => 'MimeMailSystem',
+    'mimemail' => 'HTMLMailSystem',
     'htmlmail' => 'HTMLMailSystem',
-    'webform_webform_html' => 'HTMLMailSystem',
-    'commerce_invoice_receipt' => 'InvoiceMailSystem',
   );
   $export['mail_system'] = $strongarm;
 
